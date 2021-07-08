@@ -1,0 +1,310 @@
+SQL> SELECT * FROM EMPLOYEES WHERE TO_CHAR(HIRE_DATE, 'MON')= 'MAY';
+
+EMPLOYEE_ID FIRST_NAME           LAST_NAME                 EMAIL                     PHONE_NUMBER         HIRE_DATE JOB_ID         SALARY COMMISSION_PCT MANAGER_ID DEPARTMENT_ID                       
+----------- -------------------- ------------------------- ------------------------- -------------------- --------- ---------- ---------- -------------- ---------- -------------                       
+        104 Bruce                Ernst                     BERNST                    590.423.4568         21-MAY-07 IT_PROG          6000                       103            60                       
+        115 Alexander            Khoo                      AKHOO                     515.127.4562         18-MAY-03 PU_CLERK         3100                       114            30                       
+        122 Payam                Kaufling                  PKAUFLIN                  650.123.3234         01-MAY-03 ST_MAN           7900                       100            50                       
+        174 Ellen                Abel                      EABEL                     011.44.1644.429267   11-MAY-04 SA_REP          11000             .3        149            80                       
+        178 Kimberely            Grant                     KGRANT                    011.44.1644.429263   24-MAY-07 SA_REP           7000            .15        149                                     
+        197 Kevin                Feeney                    KFEENEY                   650.507.9822         23-MAY-06 SH_CLERK         3000                       124            50                       
+
+6 rows selected.
+
+SQL> SELECT * FROM EMPLOYEES WHERE COMMISSION_PCT IS NULL AND SALARY BETWEEN 5000 AND 10000 AND DEPARTMENT_ID=30;
+
+no rows selected
+
+SQL> SELECT FIRST_NAME, HIRE_DATE, FLOOR((SYSDATE-HIRE_DATE)/365)FROM EMPLOYEES;
+
+FIRST_NAME           HIRE_DATE FLOOR((SYSDATE-HIRE_DATE)/365)                                                                                                                                           
+-------------------- --------- ------------------------------                                                                                                                                           
+Steven               17-JUN-03                             18                                                                                                                                           
+Neena                21-SEP-05                             15                                                                                                                                           
+Lex                  13-JAN-01                             20                                                                                                                                           
+Alexander            03-JAN-06                             15                                                                                                                                           
+Bruce                21-MAY-07                             14                                                                                                                                           
+David                25-JUN-05                             16                                                                                                                                           
+Valli                05-FEB-06                             15                                                                                                                                           
+Diana                07-FEB-07                             14                                                                                                                                           
+Nancy                17-AUG-02                             18                                                                                                                                           
+Daniel               16-AUG-02                             18                                                                                                                                           
+John                 28-SEP-05                             15                                                                                                                                           
+
+FIRST_NAME           HIRE_DATE FLOOR((SYSDATE-HIRE_DATE)/365)                                                                                                                                           
+-------------------- --------- ------------------------------                                                                                                                                           
+Ismael               30-SEP-05                             15                                                                                                                                           
+Jose Manuel          07-MAR-06                             15                                                                                                                                           
+Luis                 07-DEC-07                             13                                                                                                                                           
+Den                  07-DEC-02                             18                                                                                                                                           
+Alexander            18-MAY-03                             18                                                                                                                                           
+Shelli               24-DEC-05                             15                                                                                                                                           
+Sigal                24-JUL-05                             15                                                                                                                                           
+Guy                  15-NOV-06                             14                                                                                                                                           
+Karen                10-AUG-07                             13                                                                                                                                           
+Matthew              18-JUL-04                             16                                                                                                                                           
+Adam                 10-APR-05                             16                                                                                                                                           
+
+FIRST_NAME           HIRE_DATE FLOOR((SYSDATE-HIRE_DATE)/365)                                                                                                                                           
+-------------------- --------- ------------------------------                                                                                                                                           
+Payam                01-MAY-03                             18                                                                                                                                           
+Shanta               10-OCT-05                             15                                                                                                                                           
+Kevin                16-NOV-07                             13                                                                                                                                           
+Julia                16-JUL-05                             15                                                                                                                                           
+Irene                28-SEP-06                             14                                                                                                                                           
+James                14-JAN-07                             14                                                                                                                                           
+Steven               08-MAR-08                             13                                                                                                                                           
+Laura                20-AUG-05                             15                                                                                                                                           
+Mozhe                30-OCT-05                             15                                                                                                                                           
+James                16-FEB-05                             16                                                                                                                                           
+TJ                   10-APR-07                             14                                                                                                                                           
+
+FIRST_NAME           HIRE_DATE FLOOR((SYSDATE-HIRE_DATE)/365)                                                                                                                                           
+-------------------- --------- ------------------------------                                                                                                                                           
+Jason                14-JUN-04                             17                                                                                                                                           
+Michael              26-AUG-06                             14                                                                                                                                           
+Ki                   12-DEC-07                             13                                                                                                                                           
+Hazel                06-FEB-08                             13                                                                                                                                           
+Renske               14-JUL-03                             17                                                                                                                                           
+Stephen              26-OCT-05                             15                                                                                                                                           
+John                 12-FEB-06                             15                                                                                                                                           
+Joshua               06-APR-06                             15                                                                                                                                           
+Trenna               17-OCT-03                             17                                                                                                                                           
+Curtis               29-JAN-05                             16                                                                                                                                           
+Randall              15-MAR-06                             15                                                                                                                                           
+
+FIRST_NAME           HIRE_DATE FLOOR((SYSDATE-HIRE_DATE)/365)                                                                                                                                           
+-------------------- --------- ------------------------------                                                                                                                                           
+Peter                09-JUL-06                             15                                                                                                                                           
+John                 01-OCT-04                             16                                                                                                                                           
+Karen                05-JAN-05                             16                                                                                                                                           
+Alberto              10-MAR-05                             16                                                                                                                                           
+Gerald               15-OCT-07                             13                                                                                                                                           
+Eleni                29-JAN-08                             13                                                                                                                                           
+Peter                30-JAN-05                             16                                                                                                                                           
+David                24-MAR-05                             16                                                                                                                                           
+Peter                20-AUG-05                             15                                                                                                                                           
+Christopher          30-MAR-06                             15                                                                                                                                           
+Nanette              09-DEC-06                             14                                                                                                                                           
+
+FIRST_NAME           HIRE_DATE FLOOR((SYSDATE-HIRE_DATE)/365)                                                                                                                                           
+-------------------- --------- ------------------------------                                                                                                                                           
+Oliver               23-NOV-07                             13                                                                                                                                           
+Janette              30-JAN-04                             17                                                                                                                                           
+Patrick              04-MAR-04                             17                                                                                                                                           
+Allan                01-AUG-04                             16                                                                                                                                           
+Lindsey              10-MAR-05                             16                                                                                                                                           
+Louise               15-DEC-05                             15                                                                                                                                           
+Sarath               03-NOV-06                             14                                                                                                                                           
+Clara                11-NOV-05                             15                                                                                                                                           
+Danielle             19-MAR-07                             14                                                                                                                                           
+Mattea               24-JAN-08                             13                                                                                                                                           
+David                23-FEB-08                             13                                                                                                                                           
+
+FIRST_NAME           HIRE_DATE FLOOR((SYSDATE-HIRE_DATE)/365)                                                                                                                                           
+-------------------- --------- ------------------------------                                                                                                                                           
+Sundar               24-MAR-08                             13                                                                                                                                           
+Amit                 21-APR-08                             13                                                                                                                                           
+Lisa                 11-MAR-05                             16                                                                                                                                           
+Harrison             23-MAR-06                             15                                                                                                                                           
+Tayler               24-JAN-06                             15                                                                                                                                           
+William              23-FEB-07                             14                                                                                                                                           
+Elizabeth            24-MAR-07                             14                                                                                                                                           
+Sundita              21-APR-08                             13                                                                                                                                           
+Ellen                11-MAY-04                             17                                                                                                                                           
+Alyssa               19-MAR-05                             16                                                                                                                                           
+Jonathon             24-MAR-06                             15                                                                                                                                           
+
+FIRST_NAME           HIRE_DATE FLOOR((SYSDATE-HIRE_DATE)/365)                                                                                                                                           
+-------------------- --------- ------------------------------                                                                                                                                           
+Jack                 23-APR-06                             15                                                                                                                                           
+Kimberely            24-MAY-07                             14                                                                                                                                           
+Charles              04-JAN-08                             13                                                                                                                                           
+Winston              24-JAN-06                             15                                                                                                                                           
+Jean                 23-FEB-06                             15                                                                                                                                           
+Martha               21-JUN-07                             14                                                                                                                                           
+Girard               03-FEB-08                             13                                                                                                                                           
+Nandita              27-JAN-04                             17                                                                                                                                           
+Alexis               20-FEB-05                             16                                                                                                                                           
+Julia                24-JUN-06                             15                                                                                                                                           
+Anthony              07-FEB-07                             14                                                                                                                                           
+
+FIRST_NAME           HIRE_DATE FLOOR((SYSDATE-HIRE_DATE)/365)                                                                                                                                           
+-------------------- --------- ------------------------------                                                                                                                                           
+Kelly                14-JUN-05                             16                                                                                                                                           
+Jennifer             13-AUG-05                             15                                                                                                                                           
+Timothy              11-JUL-06                             14                                                                                                                                           
+Randall              19-DEC-07                             13                                                                                                                                           
+Sarah                04-FEB-04                             17                                                                                                                                           
+Britney              03-MAR-05                             16                                                                                                                                           
+Samuel               01-JUL-06                             15                                                                                                                                           
+Vance                17-MAR-07                             14                                                                                                                                           
+Alana                24-APR-06                             15                                                                                                                                           
+Kevin                23-MAY-06                             15                                                                                                                                           
+Donald               21-JUN-07                             14                                                                                                                                           
+
+FIRST_NAME           HIRE_DATE FLOOR((SYSDATE-HIRE_DATE)/365)                                                                                                                                           
+-------------------- --------- ------------------------------                                                                                                                                           
+Douglas              13-JAN-08                             13                                                                                                                                           
+Jennifer             17-SEP-03                             17                                                                                                                                           
+Michael              17-FEB-04                             17                                                                                                                                           
+Pat                  17-AUG-05                             15                                                                                                                                           
+Susan                07-JUN-02                             19                                                                                                                                           
+Hermann              07-JUN-02                             19                                                                                                                                           
+Shelley              07-JUN-02                             19                                                                                                                                           
+William              07-JUN-02                             19                                                                                                                                           
+
+107 rows selected.
+
+SQL> SELECT FIRST_NAME, HIRE_DATE FROM EMPLOYEES WHERE TO_CHAR(HIRE_DATE, 'YYYY')=2001;
+
+FIRST_NAME           HIRE_DATE                                                                                                                                                                          
+-------------------- ---------                                                                                                                                                                          
+Lex                  13-JAN-01                                                                                                                                                                          
+
+SQL> SELECT INITCAP(FIRST_NAME), INITCAP(LAST_NAME) FROM EMPLOYEES;
+
+INITCAP(FIRST_NAME)  INITCAP(LAST_NAME)                                                                                                                                                                 
+-------------------- -------------------------                                                                                                                                                          
+Ellen                Abel                                                                                                                                                                               
+Sundar               Ande                                                                                                                                                                               
+Mozhe                Atkinson                                                                                                                                                                           
+David                Austin                                                                                                                                                                             
+Hermann              Baer                                                                                                                                                                               
+Shelli               Baida                                                                                                                                                                              
+Amit                 Banda                                                                                                                                                                              
+Elizabeth            Bates                                                                                                                                                                              
+Sarah                Bell                                                                                                                                                                               
+David                Bernstein                                                                                                                                                                          
+Laura                Bissot                                                                                                                                                                             
+
+INITCAP(FIRST_NAME)  INITCAP(LAST_NAME)                                                                                                                                                                 
+-------------------- -------------------------                                                                                                                                                          
+Harrison             Bloom                                                                                                                                                                              
+Alexis               Bull                                                                                                                                                                               
+Anthony              Cabrio                                                                                                                                                                             
+Gerald               Cambrault                                                                                                                                                                          
+Nanette              Cambrault                                                                                                                                                                          
+John                 Chen                                                                                                                                                                               
+Kelly                Chung                                                                                                                                                                              
+Karen                Colmenares                                                                                                                                                                         
+Curtis               Davies                                                                                                                                                                             
+Lex                  De Haan                                                                                                                                                                            
+Julia                Dellinger                                                                                                                                                                          
+
+INITCAP(FIRST_NAME)  INITCAP(LAST_NAME)                                                                                                                                                                 
+-------------------- -------------------------                                                                                                                                                          
+Jennifer             Dilly                                                                                                                                                                              
+Louise               Doran                                                                                                                                                                              
+Bruce                Ernst                                                                                                                                                                              
+Alberto              Errazuriz                                                                                                                                                                          
+Britney              Everett                                                                                                                                                                            
+Daniel               Faviet                                                                                                                                                                             
+Pat                  Fay                                                                                                                                                                                
+Kevin                Feeney                                                                                                                                                                             
+Jean                 Fleaur                                                                                                                                                                             
+Tayler               Fox                                                                                                                                                                                
+Adam                 Fripp                                                                                                                                                                              
+
+INITCAP(FIRST_NAME)  INITCAP(LAST_NAME)                                                                                                                                                                 
+-------------------- -------------------------                                                                                                                                                          
+Timothy              Gates                                                                                                                                                                              
+Ki                   Gee                                                                                                                                                                                
+Girard               Geoni                                                                                                                                                                              
+William              Gietz                                                                                                                                                                              
+Douglas              Grant                                                                                                                                                                              
+Kimberely            Grant                                                                                                                                                                              
+Nancy                Greenberg                                                                                                                                                                          
+Danielle             Greene                                                                                                                                                                             
+Peter                Hall                                                                                                                                                                               
+Michael              Hartstein                                                                                                                                                                          
+Shelley              Higgins                                                                                                                                                                            
+
+INITCAP(FIRST_NAME)  INITCAP(LAST_NAME)                                                                                                                                                                 
+-------------------- -------------------------                                                                                                                                                          
+Guy                  Himuro                                                                                                                                                                             
+Alexander            Hunold                                                                                                                                                                             
+Alyssa               Hutton                                                                                                                                                                             
+Charles              Johnson                                                                                                                                                                            
+Vance                Jones                                                                                                                                                                              
+Payam                Kaufling                                                                                                                                                                           
+Alexander            Khoo                                                                                                                                                                               
+Janette              King                                                                                                                                                                               
+Steven               King                                                                                                                                                                               
+Neena                Kochhar                                                                                                                                                                            
+Sundita              Kumar                                                                                                                                                                              
+
+INITCAP(FIRST_NAME)  INITCAP(LAST_NAME)                                                                                                                                                                 
+-------------------- -------------------------                                                                                                                                                          
+Renske               Ladwig                                                                                                                                                                             
+James                Landry                                                                                                                                                                             
+David                Lee                                                                                                                                                                                
+Jack                 Livingston                                                                                                                                                                         
+Diana                Lorentz                                                                                                                                                                            
+Jason                Mallin                                                                                                                                                                             
+Steven               Markle                                                                                                                                                                             
+James                Marlow                                                                                                                                                                             
+Mattea               Marvins                                                                                                                                                                            
+Randall              Matos                                                                                                                                                                              
+Susan                Mavris                                                                                                                                                                             
+
+INITCAP(FIRST_NAME)  INITCAP(LAST_NAME)                                                                                                                                                                 
+-------------------- -------------------------                                                                                                                                                          
+Samuel               Mccain                                                                                                                                                                             
+Allan                Mcewen                                                                                                                                                                             
+Irene                Mikkilineni                                                                                                                                                                        
+Kevin                Mourgos                                                                                                                                                                            
+Julia                Nayer                                                                                                                                                                              
+Donald               Oconnell                                                                                                                                                                           
+Christopher          Olsen                                                                                                                                                                              
+Tj                   Olson                                                                                                                                                                              
+Lisa                 Ozer                                                                                                                                                                               
+Karen                Partners                                                                                                                                                                           
+Valli                Pataballa                                                                                                                                                                          
+
+INITCAP(FIRST_NAME)  INITCAP(LAST_NAME)                                                                                                                                                                 
+-------------------- -------------------------                                                                                                                                                          
+Joshua               Patel                                                                                                                                                                              
+Randall              Perkins                                                                                                                                                                            
+Hazel                Philtanker                                                                                                                                                                         
+Luis                 Popp                                                                                                                                                                               
+Trenna               Rajs                                                                                                                                                                               
+Den                  Raphaely                                                                                                                                                                           
+Michael              Rogers                                                                                                                                                                             
+John                 Russell                                                                                                                                                                            
+Nandita              Sarchand                                                                                                                                                                           
+Ismael               Sciarra                                                                                                                                                                            
+John                 Seo                                                                                                                                                                                
+
+INITCAP(FIRST_NAME)  INITCAP(LAST_NAME)                                                                                                                                                                 
+-------------------- -------------------------                                                                                                                                                          
+Sarath               Sewall                                                                                                                                                                             
+Lindsey              Smith                                                                                                                                                                              
+William              Smith                                                                                                                                                                              
+Stephen              Stiles                                                                                                                                                                             
+Martha               Sullivan                                                                                                                                                                           
+Patrick              Sully                                                                                                                                                                              
+Jonathon             Taylor                                                                                                                                                                             
+Winston              Taylor                                                                                                                                                                             
+Sigal                Tobias                                                                                                                                                                             
+Peter                Tucker                                                                                                                                                                             
+Oliver               Tuvault                                                                                                                                                                            
+
+INITCAP(FIRST_NAME)  INITCAP(LAST_NAME)                                                                                                                                                                 
+-------------------- -------------------------                                                                                                                                                          
+Jose Manuel          Urman                                                                                                                                                                              
+Peter                Vargas                                                                                                                                                                             
+Clara                Vishney                                                                                                                                                                            
+Shanta               Vollman                                                                                                                                                                            
+Alana                Walsh                                                                                                                                                                              
+Matthew              Weiss                                                                                                                                                                              
+Jennifer             Whalen                                                                                                                                                                             
+Eleni                Zlotkey                                                                                                                                                                            
+
+107 rows selected.
+
+SQL> SELECT * FROM EMPLOYEES WHERE TO_CHAR(HIRE_DATE,'YYYY') = 2021;
+
+no rows selected
+
+SQL> spool off;
