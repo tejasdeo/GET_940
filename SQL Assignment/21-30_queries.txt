@@ -1,0 +1,183 @@
+SQL> SELECT SYSDATE - to_date('01-jan-2011') FROM DUAL;
+
+SYSDATE-TO_DATE('01-JAN-2011')                                                  
+------------------------------                                                  
+                    3843.85773                                                  
+
+SQL> SET LINESIZE 170;
+SQL> SELECT TO_CHAR(HIRE_DATE,'MM'), COUNT (*) FROM EMPLOYEES
+  2  WHERE TO_CHAR(HIRE_DATE,'YYYY')= TO_CHAR(SYSDATE,'YYYY') GROUP BY TO_CHAR(HIRE_DATE,'MM')
+  3  ;
+
+no rows selected
+
+SQL> SELECT MANAGER_ID, COUNT(*) FROM EMPLOYEES GROUP BY MANAGER_ID;
+
+MANAGER_ID   COUNT(*)                                                                                                                                                     
+---------- ----------                                                                                                                                                     
+                    1                                                                                                                                                     
+       100         14                                                                                                                                                     
+       123          8                                                                                                                                                     
+       120          8                                                                                                                                                     
+       121          8                                                                                                                                                     
+       147          6                                                                                                                                                     
+       108          5                                                                                                                                                     
+       148          6                                                                                                                                                     
+       149          6                                                                                                                                                     
+       205          1                                                                                                                                                     
+       102          1                                                                                                                                                     
+
+MANAGER_ID   COUNT(*)                                                                                                                                                     
+---------- ----------                                                                                                                                                     
+       201          1                                                                                                                                                     
+       101          5                                                                                                                                                     
+       114          5                                                                                                                                                     
+       124          8                                                                                                                                                     
+       145          6                                                                                                                                                     
+       146          6                                                                                                                                                     
+       103          4                                                                                                                                                     
+       122          8                                                                                                                                                     
+
+19 rows selected.
+
+SQL> SELECT EMPLOYEE_ID, MAX(END_DATE) FROM JOB_HISTORY GROUP BY EMPLOYEE_ID;
+
+EMPLOYEE_ID MAX(END_D                                                                                                                                                     
+----------- ---------                                                                                                                                                     
+        101 15-MAR-05                                                                                                                                                     
+        102 24-JUL-06                                                                                                                                                     
+        114 31-DEC-07                                                                                                                                                     
+        122 31-DEC-07                                                                                                                                                     
+        176 31-DEC-07                                                                                                                                                     
+        200 31-DEC-06                                                                                                                                                     
+        201 19-DEC-07                                                                                                                                                     
+
+7 rows selected.
+
+SQL> SELECT COUNT(*) FROM EMPLOYEES WHERE TO_CHAR(HIRE_DATE,'DD') > 15;
+
+  COUNT(*)                                                                                                                                                                
+----------                                                                                                                                                                
+        57                                                                                                                                                                
+
+SQL> SELECT COUNTRY_ID,  COUNT(*)  FROM LOCATIONS GROUP BY COUNTRY_ID;
+
+CO   COUNT(*)                                                                                                                                                             
+-- ----------                                                                                                                                                             
+US          4                                                                                                                                                             
+SG          1                                                                                                                                                             
+CA          2                                                                                                                                                             
+CH          2                                                                                                                                                             
+IT          2                                                                                                                                                             
+MX          1                                                                                                                                                             
+CN          1                                                                                                                                                             
+DE          1                                                                                                                                                             
+JP          2                                                                                                                                                             
+IN          1                                                                                                                                                             
+AU          1                                                                                                                                                             
+
+CO   COUNT(*)                                                                                                                                                             
+-- ----------                                                                                                                                                             
+UK          3                                                                                                                                                             
+BR          1                                                                                                                                                             
+NL          1                                                                                                                                                             
+
+14 rows selected.
+
+SQL> SELECT DEPARTMENT_ID, AVG(SALARY) FROM EMPLOYEES
+  2  WHERE COMMISSION_PCT IS NOT NULL GROUP BY DEPARTMENT_ID
+  3  ;
+
+DEPARTMENT_ID AVG(SALARY)                                                                                                                                                 
+------------- -----------                                                                                                                                                 
+                     7000                                                                                                                                                 
+           80  8955.88235                                                                                                                                                 
+
+SQL> SELECT JOB_ID, COUNT(*), SUM(SALARY), MAX(SALARY)-MIN(SALARY) SALARY FROM EMPLOYEES GROUP BY JOB_ID;
+
+JOB_ID       COUNT(*) SUM(SALARY)     SALARY                                                                                                                              
+---------- ---------- ----------- ----------                                                                                                                              
+IT_PROG             5       28800       4800                                                                                                                              
+AC_MGR              1       12008          0                                                                                                                              
+AC_ACCOUNT          1        8300          0                                                                                                                              
+ST_MAN              5       36400       2400                                                                                                                              
+PU_MAN              1       11000          0                                                                                                                              
+AD_ASST             1        4400          0                                                                                                                              
+AD_VP               2       34000          0                                                                                                                              
+SH_CLERK           20       64300       1700                                                                                                                              
+FI_ACCOUNT          5       39600       2100                                                                                                                              
+FI_MGR              1       12008          0                                                                                                                              
+PU_CLERK            5       13900        600                                                                                                                              
+
+JOB_ID       COUNT(*) SUM(SALARY)     SALARY                                                                                                                              
+---------- ---------- ----------- ----------                                                                                                                              
+SA_MAN              5       61000       3500                                                                                                                              
+MK_MAN              1       13000          0                                                                                                                              
+PR_REP              1       10000          0                                                                                                                              
+AD_PRES             1       24000          0                                                                                                                              
+SA_REP             30      250500       5400                                                                                                                              
+MK_REP              1        6000          0                                                                                                                              
+ST_CLERK           20       55700       1500                                                                                                                              
+HR_REP              1        6500          0                                                                                                                              
+
+19 rows selected.
+
+SQL> SELECT JOB_ID, AVG(SALARY) FROM EMPLOYEES
+  2  GROUP BY JOB_ID
+  3  ;
+
+JOB_ID     AVG(SALARY)                                                                                                                                                    
+---------- -----------                                                                                                                                                    
+IT_PROG           5760                                                                                                                                                    
+AC_MGR           12008                                                                                                                                                    
+AC_ACCOUNT        8300                                                                                                                                                    
+ST_MAN            7280                                                                                                                                                    
+PU_MAN           11000                                                                                                                                                    
+AD_ASST           4400                                                                                                                                                    
+AD_VP            17000                                                                                                                                                    
+SH_CLERK          3215                                                                                                                                                    
+FI_ACCOUNT        7920                                                                                                                                                    
+FI_MGR           12008                                                                                                                                                    
+PU_CLERK          2780                                                                                                                                                    
+
+JOB_ID     AVG(SALARY)                                                                                                                                                    
+---------- -----------                                                                                                                                                    
+SA_MAN           12200                                                                                                                                                    
+MK_MAN           13000                                                                                                                                                    
+PR_REP           10000                                                                                                                                                    
+AD_PRES          24000                                                                                                                                                    
+SA_REP            8350                                                                                                                                                    
+MK_REP            6000                                                                                                                                                    
+ST_CLERK          2785                                                                                                                                                    
+HR_REP            6500                                                                                                                                                    
+
+19 rows selected.
+
+SQL> SELECT JOB_ID, AVG(SALARY) FROM EMPLOYEES
+  2  GROUP BY JOB_ID HAVING AVG(SALARY) > 10000;
+
+JOB_ID     AVG(SALARY)                                                                                                                                                    
+---------- -----------                                                                                                                                                    
+AC_MGR           12008                                                                                                                                                    
+PU_MAN           11000                                                                                                                                                    
+AD_VP            17000                                                                                                                                                    
+FI_MGR           12008                                                                                                                                                    
+SA_MAN           12200                                                                                                                                                    
+MK_MAN           13000                                                                                                                                                    
+AD_PRES          24000                                                                                                                                                    
+
+7 rows selected.
+
+SQL> SELECT TO_CHAR(HIRE_DATE,'YYYY') FROM EMPLOYEES
+  2  GROUP BY TO_CHAR(HIRE_DATE,'YYYY')
+  3  HAVING COUNT(EMPLOYEE_ID) > 10
+  4  ;
+
+TO_C                                                                                                                                                                      
+----                                                                                                                                                                      
+2005                                                                                                                                                                      
+2008                                                                                                                                                                      
+2007                                                                                                                                                                      
+2006                                                                                                                                                                      
+
+SQL> SPOOL OFF;
