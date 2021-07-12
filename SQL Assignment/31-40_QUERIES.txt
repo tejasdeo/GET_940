@@ -1,0 +1,123 @@
+SQL> SELECT DEPARTMENT_ID FROM EMPLOYEES
+  2  WHERE COMMISSION_PCT IS NOT NULL
+  3  GROUP BY DEPARTMENT_ID
+  4  HAVING COUNT(COMMISSION_PCT)>5
+  5  ;
+
+DEPARTMENT_ID                                                                   
+-------------                                                                   
+           80                                                                   
+
+SQL> SELECT EMPLOYEE_ID FROM JOB_HISTORY GROUP BY EMPLOYEE_ID HAVING COUNT(*) > 1;
+
+EMPLOYEE_ID                                                                     
+-----------                                                                     
+        101                                                                     
+        176                                                                     
+        200                                                                     
+
+SQL> SELECT JOB_ID FROM JOB_HISTORY
+  2  WHERE END_DATE-START_DATE > 100
+  3  GROUP BY JOB_ID
+  4  HAVING COUNT(*)>3
+  5  ;
+
+no rows selected
+
+SQL> SELECT DEPARTMENT_ID, TO_CHAR(HIRE_DATE,'YYYY'), COUNT(EMPLOYEE_ID)
+  2  FROM EMPLOYEES
+  3  GROUP BY DEPARTMENT_ID, TO_CHAR(HIRE_DATE, 'YYYY')
+  4  ORDER BY DEPARTMENT_ID
+  5  ;
+
+DEPARTMENT_ID TO_C COUNT(EMPLOYEE_ID)                                           
+------------- ---- ------------------                                           
+           10 2003                  1                                           
+           20 2004                  1                                           
+           20 2005                  1                                           
+           30 2002                  1                                           
+           30 2003                  1                                           
+           30 2005                  2                                           
+           30 2006                  1                                           
+           30 2007                  1                                           
+           40 2002                  1                                           
+           50 2003                  3                                           
+           50 2004                  4                                           
+
+DEPARTMENT_ID TO_C COUNT(EMPLOYEE_ID)                                           
+------------- ---- ------------------                                           
+           50 2005                 12                                           
+           50 2006                 13                                           
+           50 2007                  9                                           
+           50 2008                  4                                           
+           60 2005                  1                                           
+           60 2006                  2                                           
+           60 2007                  2                                           
+           70 2002                  1                                           
+           80 2004                  5                                           
+           80 2005                 10                                           
+           80 2006                  7                                           
+
+DEPARTMENT_ID TO_C COUNT(EMPLOYEE_ID)                                           
+------------- ---- ------------------                                           
+           80 2007                  5                                           
+           80 2008                  7                                           
+           90 2001                  1                                           
+           90 2003                  1                                           
+           90 2005                  1                                           
+          100 2002                  2                                           
+          100 2005                  2                                           
+          100 2006                  1                                           
+          100 2007                  1                                           
+          110 2002                  2                                           
+              2007                  1                                           
+
+33 rows selected.
+
+SQL> SELECT DISTINCT DEPARTMENT_ID
+  2  FROM EMPLOYEES
+  3  GROUP BY DEPARTMENT_ID, MANAGER_ID
+  4  HAVING COUNT(EMPLOYEE_ID) > 5
+  5  ;
+
+DEPARTMENT_ID                                                                   
+-------------                                                                   
+           80                                                                   
+           50                                                                   
+
+SQL> UPDATE EMPLOYEES SET SALARY = 8000 WHERE EMPLOYEE_ID = 115 AND SALARY < 6000;
+
+1 row updated.
+
+SQL> INSERT INTO EMPLOYEES  (EMPLOYEE_ID, FIRST_NAME, LAST_NAME, EMAIL, PHONE_NUMBER, HIRE_DATE,JOB_ID, SALARY, DEPARTMENT_ID) VALUES (10001, 'TEJAS', 'DEO', 'tejasndeo@gmail.com', '8521479635', '12-JUL-2021', 'SA_MAN', 5000, 80);
+
+1 row created.
+
+SQL> DELETE FROM DEPARTMENTS WHERE DEPARTMENT_ID=20;
+DELETE FROM DEPARTMENTS WHERE DEPARTMENT_ID=20
+*
+ERROR at line 1:
+ORA-02292: integrity constraint (HR.EMP_DEPT_FK) violated - child record found 
+
+
+SQL> UPDATE EMPLOYEES SET JOB_ID= 'IT_PROG'
+  2  WHERE EMPLOYEE_ID=110 AND DEPARTMENT_ID=10 AND NOT JOB_ID LIKE 'IT%'
+  3  ;
+
+0 rows updated.
+
+SQL> INSERT INTO DEPARTMENTS (150,'SPORTS',120,1200);
+INSERT INTO DEPARTMENTS (150,'SPORTS',120,1200)
+                         *
+ERROR at line 1:
+ORA-00928: missing SELECT keyword 
+
+
+SQL> INSERT INTO DEPARTMENTS VALUES (150,'SPORTS',120,1200);
+INSERT INTO DEPARTMENTS VALUES (150,'SPORTS',120,1200)
+*
+ERROR at line 1:
+ORA-00001: unique constraint (HR.DEPT_ID_PK) violated 
+
+
+SQL> SPOOL OFF;
